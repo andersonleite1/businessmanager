@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head>
+
+<meta charset="UTF-8"/>
+<title>Gestão Empresas</title>
+
+<link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet"/>
+<h:outputStylesheet library="assets" name="estilo.css" />
+
+</h:head>
+
+<h:body>
+	<header>
+		<h:graphicImage library="assets" name="logo.png" width="270" height="70"/>
+	</header>
+	
+	<h1 id="titulo">
+		<ui:insert name="titulo" />
+	</h1>
+
+	<div id="conteudo">		
+		<ui:insert name="conteudo" />	
+	</div>
+	
+	<footer id="footer">
+		<div>
+			<p>© Desenvolvido com 🖤 por <a href="https://andersonleite.dev/" target="_blank">&lt;AL/&gt;</a></p>
+		</div>
+	</footer>
+	
+</h:body>
+
+</html>
