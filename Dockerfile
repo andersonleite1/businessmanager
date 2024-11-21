@@ -1,13 +1,17 @@
-# Use uma imagem base de Tomcat 8.5 com JDK 8
 FROM tomcat:8.5-jdk8-openjdk
 
-# Remova o aplicativo de exemplo do Tomcat
+RUN apt-get update && apt-get install -y maven
+
 RUN rm -rf /usr/local/tomcat/webapps/ROOT
 
-# Copie o arquivo WAR gerado pela sua aplicação para o Tomcat
-COPY target/business-manager.war /usr/local/tomcat/webapps/ROOT.war
+COPY . /usr/local/tomcat/
 
-# Exponha a porta padrão do Tomcat
+WORKDIR /usr/local/tomcat
+
+RUN mvn clean package
+
+COPY /usr/local/tomcat/target/business-manager-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+
 EXPOSE 8080
 
 # Comando para iniciar o Tomcat
