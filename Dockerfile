@@ -22,7 +22,7 @@ RUN rm -rf /usr/local/tomcat/webapps/ROOT
 COPY --from=build /app/target/business-manager-0.0.1.war /usr/local/tomcat/webapps/business-manager.war
 
 # Exponha a porta 8080
-EXPOSE 8080
+EXPOSE 8080 80
 
 # Comando para iniciar o Tomcat
 CMD ["catalina.sh", "run"]
