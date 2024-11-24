@@ -1,17 +1,27 @@
-FROM tomcat:8.5-jdk8-openjdk
+# Usar uma imagem intermediária para construir o projeto
+FROM maven:3.8.6-jdk-8 AS build
 
-RUN apt-get update && apt-get install -y maven
+# Define o diretório de trabalho
+WORKDIR /app
 
-RUN rm -rf /usr/local/tomcat/webapps/ROOT
+# Copia o arquivo pom.xml e outros arquivos necessários para o build
+COPY pom.xml /app/
+COPY src /app/src
+COPY init.sh /app/
 
-COPY . /usr/local/tomcat/
-
-WORKDIR /usr/local/tomcat
-
+# Executa o comando de build
 RUN mvn clean package
 
-COPY /usr/local/tomcat/target/business-manager-0.0.1-SNAPSHOT.war /usr/local/tomcat/webapps/ROOT.war
+# Usa uma imagem Tomcat como a base para executar a aplicação
+FROM tomcat:8.5-jdk8-openjdk
 
+# Remove a aplicação padrão ROOT
+RUN rm -rf /usr/local/tomcat/webapps/ROOT
+
+# Copia o arquivo WAR construído para o diretório webapps do Tomcat
+COPY --from=build /app/target/business-manager-0.0.1.war /usr/local/tomcat/webapps/business-manager.war
+
+# Exponha a porta 8080
 EXPOSE 8080
 
 # Comando para iniciar o Tomcat

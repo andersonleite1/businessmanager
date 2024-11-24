@@ -5,7 +5,7 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="BusinessManager">
 		<properties>
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/business_manager_db?useSSL=false" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://mysql/business_manager_db?useSSL=false" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="rootpassword" />
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
