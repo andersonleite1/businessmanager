@@ -1,10 +1,11 @@
 # Business Manager
 
-## Descrição
+## Descrição do Projeto
 
-O Business Manager é uma aplicação web para gerenciar empresas e suas atividades. Este projeto foi desenvolvido utilizando Java EE, PrimeFaces e outras tecnologias populares, seguindo a arquitetura MVC. Este README serve como documentação do projeto para ser apresentado em entrevistas de emprego e como portfólio.
+Business Manager é uma aplicação web desenvolvida para gerenciar empresas e suas atividades. A aplicação foi construída utilizando a arquitetura MVC, seguindo as melhores práticas de desenvolvimento. Ela inclui funcionalidades de CRUD para empresas e atividades, além de validações e mensagens personalizadas.
 
-Estrutura do Projeto
+## Estrutura do Projeto
+### Diretórios e Arquivos
 
 ```
 src/main
@@ -28,65 +29,24 @@ src/main
 │       └── TransacionalInterceptor.java
 ├── resources
 │   ├── dev/andersonleite/erp
-│   │   ├── Messages.properties
+│   │   └── Messages.properties
 │   ├── META-INF
-│   │   ├── sql
-│   │   │   └── dados-iniciais.sql
 │   │   ├── beans.xml
-│   │   └── persistence.xml
-│   └── ValidationMessages.properties
+│   │   ├── persistence.xml
+│   │   └── ValidationMessages.properties
+│   └── sql
+│       └── dados-iniciais.sql
 └── webapp
     ├── META-INF
     │   └── context.xml
-    ├── resources
-    └── WEB-INF
-        └── template
+    ├── WEB-INF
+    │   ├── template
+    │   ├── faces-config.xml
+    │   └── web.xml
+    └── GestaoEmpresas.xhtml
 
-```
-
-## Tecnologias Utilizadas
-
-- Java 1.8
-- Maven
-- JSF (JavaServer Faces) 2.2.14
-- PrimeFaces 13.0.10
-- Weld (CDI) 2.4.0.Final
-- Hibernate Validator 5.3.2.Final
-- Hibernate Core 5.2.4.Final
-- MySQL Connector 6.0.5
-- JAXB API 2.3.1
-- Apache POI 5.2.3
-- Servlet API 3.1.0
-
-## Configuração do Projeto
-
-### Pré-requisitos
-
-- JDK 1.8
-- Maven 3.x
-- Apache Tomcat 8.5
-
-### Configuração do Banco de Dados
-
-A aplicação utiliza MySQL como banco de dados. As configurações do banco de dados estão no arquivo persistence.xml.
-
-```
-<persistence-unit name="businessmanager_db">
-    <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-    <jta-data-source>java:/MySqlDS</jta-data-source>
-    <properties>
-        <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
-        <property name="hibernate.hbm2ddl.auto" value="update"/>
-    </properties>
-</persistence-unit>
-```
-
-### Execução do Projeto
-
-1. Clone o repositório:
-
-```
-git clone https://github.com/dev-andersonleite/business-manager.git
+docker-compose.yaml
+Dockerfile
 ```
 
 ### Estrutura do Projeto
@@ -106,11 +66,45 @@ A estrutura do projeto segue o padrão MVC:
 - **context.xml**: Configuração do contexto do Tomcat.
 - **dados-iniciais.sql**: Script SQL para popular o banco de dados com dados iniciais.
 
-## Funcionalidades
-- **Gerenciamento de Empresas**: Cadastro, edição, e exclusão de empresas.
-- **Gerenciamento de Ramos de Atividade**: Cadastro, edição, e exclusão de ramos de atividade.
-- **Validação de Dados**: Validação utilizando Hibernate Validator.
-- **Mensagens de Feedback**: Utilização de mensagens amigáveis para feedback ao usuário.
+## Dependências e Plugins
+### Dependências
+- Weld Servlet: Para injeção de dependências (CDI).
+- JSF (javax.faces): Para a construção de interfaces de usuário.
+- PrimeFaces: Componentes ricos para a UI.
+- Servlet API: Para desenvolvimento web.
+- Hibernate Validator: Para validações.
+- Hibernate Core: Para JPA.
+- MySQL Connector: Para conexão com o banco de dados MySQL.
+- JAXB API: Para manipulação de XML.
+- Apache POI: Para manipulação de arquivos Excel.
+
+### Plugins
+- Maven Compiler Plugin: Para compilar o projeto utilizando Java 1.8.
+
+## Build e Execução
+Para construir e executar o projeto, siga os passos abaixo:
+
+1. Clonar o repositório:
+```
+git clone https://github.com/andersonleite1/businessmanager
+cd businessmanager
+```
+
+2. Construir a imagem Docker:
+```
+docker-compose build
+```
+
+3. Iniciar os containers:
+```
+docker-compose up
+```
+
+4. Acessar a aplicação:
+Abra o navegador e vá para http://localhost:8080/business-manager.
+
+## Considerações Finais
+Este projeto foi desenvolvido com o objetivo de demonstrar habilidades em desenvolvimento Java EE, utilização de Docker, e boas práticas em arquitetura MVC. É um exemplo de uma aplicação completa, abrangendo desde a camada de persistência até a interface do usuário.
 
 ## Contato
 - **Nome**: Anderson Leite
