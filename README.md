@@ -79,7 +79,7 @@ A estrutura do projeto segue o padrão MVC:
 - Apache POI: Para manipulação de arquivos Excel.
 
 ### Plugins
-- Maven Compiler Plugin: Para compilar o projeto utilizando Java 1.8.
+- Maven Compiler Plugin: Para compilar o projeto utilizando Java 17.
 
 ## Build e Execução
 Para construir e executar o projeto, siga os passos abaixo:
