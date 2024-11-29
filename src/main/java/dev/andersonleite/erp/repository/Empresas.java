@@ -34,7 +34,7 @@ public class Empresas implements Serializable {
 		TypedQuery<Empresa> query = manager
 				.createQuery(jpql, Empresa.class);
 		
-		query.setParameter("razaoSocial", nome + "%");
+		query.setParameter("razaoSocial", "%" + nome + "%");
 		
 		return query.getResultList();
 	}
