@@ -1,5 +1,6 @@
 package dev.andersonleite.erp.controller;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.component.UIComponent;
@@ -8,9 +9,11 @@ import javax.faces.convert.Converter;
 
 import dev.andersonleite.erp.model.RamoAtividade;
 
-public class RamoAtividadeConverter implements Converter {
+public class RamoAtividadeConverter implements Converter, Serializable {
     
-    private List<RamoAtividade> listaRamoAtividades;
+    private static final long serialVersionUID = 1L;
+    
+	private List<RamoAtividade> listaRamoAtividades;
 
     public RamoAtividadeConverter(List<RamoAtividade> listaRamoAtividades) {
         this.listaRamoAtividades = listaRamoAtividades;

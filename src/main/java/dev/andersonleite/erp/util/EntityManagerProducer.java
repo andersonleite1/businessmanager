@@ -1,5 +1,8 @@
 package dev.andersonleite.erp.util;
 
+import java.io.Serializable;
+
+import javax.annotation.PreDestroy;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.inject.Disposes;
@@ -22,9 +25,10 @@ import javax.persistence.Persistence;
  * </ul>
  */
 @ApplicationScoped
-public class EntityManagerProducer {
+public class EntityManagerProducer implements Serializable {
 
-    /**
+    private static final long serialVersionUID = 1L;
+	/**
      * Fábrica de gerenciadores de entidade, criada ao inicializar a aplicação.
      * É usada para produzir instâncias do {@link EntityManager}.
      */
@@ -68,4 +72,12 @@ public class EntityManagerProducer {
     public void closeEntityManager(@Disposes EntityManager manager) {
         manager.close();
     }
+
+    @PreDestroy
+    public void closeEntityManagerFactory() {
+        if (factory != null) {
+            factory.close();
+        }
+    }
+
 }

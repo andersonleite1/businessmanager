@@ -60,11 +60,12 @@
 				<span class="ui-separator">
 	                <span class="ui-icon ui-icon-grip-dotted-vertical" />
 	            </span>
-	            
-	            <p:commandButton title="Exportar para o Excel" icon="fas fa-file-excel" class="toolbar-button ui-button-secondary"
-	            	ajax="false">
-	            	<p:dataExporter type="xls" target="empresasDataTable" fileName="Empresas" />
-	            </p:commandButton>	
+	            <!--  
+	            <p:commandButton title="Exportar para o Excel" icon="fas fa-file-excel" 
+	            				 class="toolbar-button ui-button-secondary"
+    							 actionListener="#{gestaoEmpresasBean.exportarParaExcel}" 
+    							 ajax="false"/>-->
+
 	            
 	            <p:commandButton value="Ajuda" type="button" icon="fas fa-info-circle" class="ui-button-help" onclick="PF('ajuda').show()"/>	
 			</f:facet>
@@ -82,23 +83,23 @@
 			
 			<p:ajax event="rowUnselect" update="frm:toolbar" />
 			
+			<p:column headerText="Nome fantasia" sortBy="#{empresa.nomeFantasia}">
+				<h:outputText value="#{empresa.nomeFantasia}" />
+			</p:column>
+			
 			<p:column headerText="Razão social" sortBy="#{empresa.razaoSocial}">
 				<h:outputText value="#{empresa.razaoSocial}" />
 			</p:column>
 			
-			<p:column headerText="Nome fantasia">
-				<h:outputText value="#{empresa.nomeFantasia}" />
-			</p:column>
-			
-			<p:column headerText="Tipo empresa">
+			<p:column headerText="Tipo empresa" sortBy="#{empresa.tipo}">
 				<h:outputText value="#{empresa.tipo}" />
 			</p:column>
 			
-			<p:column headerText="Ramo atividade">
+			<p:column headerText="Ramo atividade" sortBy="#{empresa.ramoAtividade.descricao}">
 				<h:outputText value="#{empresa.ramoAtividade.descricao}" />
 			</p:column>
 			
-			<p:column headerText="Operações">
+			<p:column headerText="Operações" sortBy="#{empresa.ramoAtividade.descricao}">
 				<h:outputText value="#{empresa.ramoAtividade.descricao}" />
 			</p:column>
 		</p:dataTable>
