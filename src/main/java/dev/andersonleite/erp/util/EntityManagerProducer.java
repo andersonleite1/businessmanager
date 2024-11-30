@@ -28,10 +28,7 @@ import javax.persistence.Persistence;
 public class EntityManagerProducer implements Serializable {
 
     private static final long serialVersionUID = 1L;
-	/**
-     * Fábrica de gerenciadores de entidade, criada ao inicializar a aplicação.
-     * É usada para produzir instâncias do {@link EntityManager}.
-     */
+
     private EntityManagerFactory factory;
 
     /**
